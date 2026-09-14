@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jv & Ck - Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #7b5242;
+            --secondary-color: #d4af37;
+            --bg-color: #fcfbfa;
+            --text-color: #4a4a4a;
+            --light-gold: #f3ebd8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .script-font {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Initial Entry Overlay to Unlock Audio */
+        #audio-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        #audio-overlay h2 {
+            font-size: 3.5rem;
+            color: var(--light-gold);
+            margin-bottom: 10px;
+        }
+
+        #audio-overlay p {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        #audio-overlay button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        #audio-overlay button:hover {
+            transform: scale(1.05);
+            background-color: #bfa030;
+        }
+
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        header h3 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--light-gold);
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 5rem;
+            margin: 10px 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            font-weight: 400;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .intro h2 {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .countdown-section {
+            background-color: var(--light-gold);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .countdown-section h2 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            min-width: 110px;
+        }
+
+        .countdown-box span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .countdown-box label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        .events {
+            background-color: white;
+        }
+
+        .events h2 {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .event-card {
+            background: var(--bg-color);
+            padding: 40px 30px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .event-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .event-card p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .rsvp {
+            background: linear-gradient(rgba(123, 82, 66, 0.85), rgba(123, 82, 66, 0.85)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .rsvp h2 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .rsvp p {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-size: 1.1rem;
+        }
+
+        .rsvp-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .rsvp-form label.seats-label {
+            text-align: left;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: -10px;
+            color: var(--light-gold);
+            letter-spacing: 0.5px;
+        }
+
+        .rsvp-form button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rsvp-form button:hover {
+            background-color: #bfa030;
+        }
+
+        #form-status {
+            margin-top: 15px;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Music Floating Button Styles */
+        .music-control {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--secondary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            background-color: #643f32;
+        }
+
+        .music-control i {
+            font-size: 2rem;
+        }
+
+        footer {
+            background-color: #2b2b2b;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        footer span {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Interactive Entry Overlay -->
+    <div id="audio-overlay">
+        <h2> </h2>
+        <p>Wedding Invitation</p>
+        <button id="open-invitation-btn"><i class="fa-solid fa-music"></i> Open Invitation</button>
+    </div>
+
+    <!-- Background Music Audio Element -->
+    <audio id="wedding-audio" loop preload="auto">
+        <source src="C:\Users\000\Desktop\New folder\Simoy - Rob Deniel  100 Awit Para Kay Stella (Official Lyric Video).mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Floating Music Toggle Button -->
+    <div class="music-control" id="music-toggle" title="Play/Pause Background Music">
+        <i class="fa-solid fa-pause" id="music-icon"></i>
+    </div>
+
+    <header>
+        <h3>You're Invited</h3>
+        <h1>Jv & Ck</h1>
+        <p><i class="fa-regular fa-calendar-days"></i> May 15, 2027 &nbsp;|&nbsp; <i class="fa-solid fa-location-dot"></i> San Pablo City, Laguna</p>
+        <a href="#intro" class="scroll-down"><i class="fa-solid fa-angle-down"></i></a>
+    </header>
+
+    <section id="intro" class="container intro">
+        <h2>We Are Getting Married!</h2>
+        <p>Together with our families, we invite you to share in our joy as we exchange our vows and begin our new chapter together. Your presence would make our special day complete.</p>
+    </section>
+
+    <section class="countdown-section">
+        <h2>Counting Down the Days</h2>
+        <div class="countdown" id="countdown">
+            <div class="countdown-box">
+                <span id="days">00</span>
+                <label>Days</label>
+            </div>
+            <div class="countdown-box">
+                <span id="hours">00</span>
+                <label>Hours</label>
+            </div>
+            <div class="countdown-box">
+                <span id="minutes">00</span>
+                <label>Minutes</label>
+            </div>
+            <div class="countdown-box">
+                <span id="seconds">00</span>
+                <label>Seconds</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="events container">
+        <h2>When & Where</h2>
+        <div class="event-grid">
+            <div class="event-card">
+                <i class="fa-solid fa-ring"></i>
+<img src="C:\Users\000\Desktop\New folder\churches_1472197280_4614_3700.jpg" alt="Nuestra Senora De Los Remedios Parish Church" style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px; margin-bottom: 15px;">
+                <h3>The Ceremony</h3>
+                <p><strong>Time:</strong> 10:00 AM</p>
+                <p><strong>Location:</strong> Nuestra Senora De Los Remedios Parish Church</p>
+                <p>San Pablo City, Laguna</p>
+            </div>
+            <div class="event-card">
+                <i class="fa-solid fa-champagne-glasses"></i>
+<img src="C:\Users\000\Desktop\New folder\5723aee3.avif" alt="Nuestra Senora De Los Remedios Parish Church" style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px; margin-bottom: 15px;">
+                <h3>The Reception</h3>
+                <p><strong>Time:</strong> 12:00 PM</p>
+                <p><strong>Location:</strong> San Lucas Angela Resort || San Pablo Laguna</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="rsvp">
+        <h2>Are You Attending?</h2>
+        <p>Please respond by April 15, 2027 so we can finalize our preparations. We hope to celebrate with you!</p>
+        
+        <form class="rsvp-form" id="rsvp-form" action="https://formspree.io/f/xrpgwovw" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <select name="attendance" required>
+                <option value="" disabled selected>Will you attend?</option>
+                <option value="yes">Accepts with pleasure</option>
+                <option value="no">Declines with regret</option>
+            </select>
+            <label for="seats" class="seats-label">Number of Seats / Guests Reserved:</label>
+            <input type="number" id="seats" name="seats" min="1" max="10" value="1" required>
+            <textarea name="message" rows="4" placeholder="Dietary restrictions or special notes (optional)"></textarea>
+            <button type="submit" id="rsvp-btn">Send RSVP</button>
+            <div id="form-status"></div>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2027 Jv & Ck. Made with <span>&hearts;</span> for our big day.</p>
+    </footer>
+
+    <script>
+        // Countdown Timer Logic
+        const weddingDate = new Date("May 15, 2027 15:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Audio & Overlay Handler
+        const audio = document.getElementById("wedding-audio");
+        const musicToggle = document.getElementById("music-toggle");
+        const musicIcon = document.getElementById("music-icon");
+        const overlay = document.getElementById("audio-overlay");
+        const openBtn = document.getElementById("open-invitation-btn");
+        let isPlaying = false;
+
+        openBtn.addEventListener("click", () => {
+            audio.play().then(() => {
+                isPlaying = true;
+                musicIcon.classList.remove("fa-music");
+                musicIcon.classList.add("fa-pause");
+                musicToggle.title = "Pause Background Music";
+            }).catch(e => {
+                console.log("Audio play error:", e);
+            });
+
+            // Fade out the overlay smoothly
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 500);
+        });
+
+        musicToggle.addEventListener("click", () => {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.classList.remove("fa-pause");
+                musicIcon.classList.add("fa-music");
+                musicToggle.title = "Play Background Music";
+            } else {
+                audio.play().then(() => {
+                    musicIcon.classList.remove("fa-music");
+                    musicIcon.classList.add("fa-pause");
+                    musicToggle.title = "Pause Background Music";
+                }).catch(e => {
+                    console.log("Audio playback failed: ", e);
+                });
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // AJAX Form Submission Logic (Formspree)
+        var form = document.getElementById("rsvp-form");
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("form-status");
+            var data = new FormData(event.target);
+            
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "Thank you! Your response has been sent.";
+                    status.style.color = "#f3ebd8";
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.innerHTML = "Oops! There was a problem submitting your form.";
+                        }
+                        status.style.color = "#ffdddd";
+                    })
+                }
+            }).catch(error => {
+                status.innerHTML = "Oops! There was a problem submitting your form.";
+                status.style.color = "#ffdddd";
+            });
+        }
+        
+        form.addEventListener("submit", handleSubmit);
+    </script>
+</body>
+</html>
