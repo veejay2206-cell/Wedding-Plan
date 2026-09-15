@@ -12,7 +12,6 @@
             --primary-navy: #0f1d36;
             --accent-gold: #d4af37;
             --light-gold: #f9f5e8;
-            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fc6f6ff 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
             --bg-color: #fcfbf7;
             --card-bg: #ffffff;
             --text-color: #2c2c2c;
@@ -350,6 +349,22 @@
             border-bottom: none;
         }
 
+        /* Special Centered Proportional Layout for Principal Sponsors */
+        .sponsor-pair {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .sponsor-pair .sponsor-connector {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-style: italic;
+            font-weight: 500;
+        }
+
         /* Details Section */
         .details-grid {
             display: grid;
@@ -547,7 +562,7 @@
 
     <!-- Background Music Audio Element -->
     <audio id="wedding-audio" loop preload="auto">
-        <source src="NSYNC - This I Promise You (Lyrics).mp3" type="audio/mp3">
+        <source src="simoy" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
@@ -607,7 +622,7 @@
             <!-- Ceremony Card -->
             <div class="artistic-frame event-card">
                 <i class="fa-solid fa-ring"></i>
-                <img src="churches_1472197280_4614_3700.jpg">
+                <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?auto=format&fit=crop&w=600&q=80" alt="Church">
                 <h3>The Ceremony</h3>
                 <p><strong>Time:</strong> 10:00 AM</p>
                 <p><strong>Location:</strong> Nuestra Senora De Los Remedios Parish Church</p>
@@ -620,7 +635,7 @@
             <!-- Reception Card -->
             <div class="artistic-frame event-card">
                 <i class="fa-solid fa-champagne-glasses"></i>
-                <img src="5723aee3.avif">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80" alt="Reception Resort">
                 <h3>The Reception</h3>
                 <p><strong>Time:</strong> 12:00 PM</p>
                 <p><strong>Location:</strong> San Lucas Angela Resort</p>
@@ -648,33 +663,82 @@
                 </ul>
             </div>
 
-            <!-- Principal Sponsors -->
-            <div class="artistic-frame entourage-card">
-                <h3>Principal Sponsors</h3>
-                <ul class="names-list">
-                    <li>Mr. John Doe & Mrs. Jane Doe</li>
-                    <li>Mr. Richard Roe & Mrs. Mary Roe</li>
-                    <li>Mr. Robert Smith & Mrs. Anna Smith</li>
-                    <li>Mr. Michael Johnson & Mrs. Linda Johnson</li>
-                </ul>
-            </div>
-
-            <!-- Secondary Sponsors -->
-            <div class="artistic-frame entourage-card">
-                <h3>Secondary Sponsors</h3>
-                <ul class="names-list">
-                    <li><strong>Candle:</strong> Paul Ramos & Chloe Garcia</li>
-                    <li><strong>Veil:</strong> John Perez & Maria Santos</li>
-                    <li><strong>Cord:</strong> Carlo Aquino & Angelica Panganiban</li>
-                </ul>
-            </div>
-
             <!-- Best Man & Maid of Honor -->
             <div class="artistic-frame entourage-card">
                 <h3>Best Man & Maid of Honor</h3>
                 <ul class="names-list">
-                    <li><strong>Best Man:</strong> David Cruz</li>
-                    <li><strong>Maid of Honor:</strong> Sarah Santos</li>
+                    <li><strong>Best Man:</strong> Romeo Evangelista</li>
+                    <li><strong>Maid of Honor:</strong> Alory Vitory</li>
+                </ul>
+            </div>
+
+            <!-- Principal Sponsors (Proportionate & Centered Layout) -->
+            <div class="artistic-frame entourage-card">
+                <h3>Principal Sponsors</h3>
+                <ul class="names-list">
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Chairman Michael Capuno</span>
+                            <span class="sponsor-connector">&amp;</span>
+                            <span>Mrs. Yette Quinita</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Ronnie Milan</span>
+                            <span class="sponsor-connector">&amp;</span>
+                            <span>Mrs. Joyet Milan</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Vic Alforja</span>
+                            <span class="sponsor-connector">&amp;</span>
+                            <span>Mrs. Fely Alforja</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Anranee de Luna</span>
+                            <span class="sponsor-connector">&amp;</span>
+                            <span>Mrs. Edna Silva</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Donato Reyes</span>
+                            <span class="sponsor-connector">/</span>
+                            <span>Mrs. Precy Gabayanan</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Aldrin Balaaldia</span>
+                            <span class="sponsor-connector">&amp;</span>
+                            <span>Mrs. Venus Endozo Florentino</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Sonny Bituin / Glenn Bituin</span>
+                            <span class="sponsor-connector">&amp;</span>
+                            <span>Mrs. Rodora Agdon</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Husband</span>
+                            <span class="sponsor-connector">/</span>
+                            <span>Mrs. Precy Dacpano</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sponsor-pair">
+                            <span>Mr. Eddie Evangelista</span>
+                            <span class="sponsor-connector">/</span>
+                            <span>Mrs. Fanny Conde</span>
+                        </div>
+                    </li>
                 </ul>
             </div>
 
@@ -682,11 +746,11 @@
             <div class="artistic-frame entourage-card">
                 <h3>Groomsmen</h3>
                 <ul class="names-list">
-                    <li>Romeo Evangelista</li>
-                    <li>Dannie Conde</li>
-                    <li>John Francis Tucino</li>
-                    <li>Renson Publico</li>
-                    <li>Wilson Publico</li>
+                    <li>Mr. John Francis Tucino</li>
+                    <li>Mr. John Christian Tucino</li>
+                    <li>Mr. Dannie Conde</li>
+                    <li>Mr. Renson Publico</li>
+                    <li>Mr. Wilson Publico</li>
                 </ul>
             </div>
 
@@ -694,11 +758,11 @@
             <div class="artistic-frame entourage-card">
                 <h3>Bridesmaids</h3>
                 <ul class="names-list">
-                    <li>Alory Vitori</li>
-                    <li>Gcel Tucino</li>
-                    <li>Denise Endozo</li>
-                    <li>Xam Endozo</li>
-                    <li>Cam Endozo</li>
+                    <li>Ms. Rianne Denise Endozo</li>
+                    <li>Ms. Anna Joyce Bueno</li>
+                    <li>Ms. Alyssa Marithe Ramos</li>
+                    <li>Ms. Mariah Miciel Ramos</li>
+                    <li>Ms. Daisy Tiquis</li>
                 </ul>
             </div>
 
@@ -706,10 +770,10 @@
             <div class="artistic-frame entourage-card">
                 <h3>Bearers & Flower Girls</h3>
                 <ul class="names-list">
-                    <li><strong>Ring Bearer:</strong> [Name Here]</li>
-                    <li><strong>Coin Bearer:</strong> [Name Here]</li>
-                    <li><strong>Bible Bearer:</strong> [Name Here]</li>
-                    <li><strong>Flower Girls:</strong><br>[Name 1] & [Name 2]</li>
+                    <li><strong>Ring Bearer:</strong> Zephyr Botchok</li>
+                    <li><strong>Coin Bearer:</strong> Drex Endozo</li>
+                    <li><strong>Bible Bearer:</strong> Ryle Endozo</li>
+                    <li><strong>Flower Girls:</strong><br>Bella Villanueva & Xam Endozo</li>
                 </ul>
             </div>
         </div>
@@ -748,12 +812,12 @@
                 <i class="fa-solid fa-list-check"></i>
                 <h3>Order of Events</h3>
                 <ul class="program-list">
-                    <li><span>10:00 AM</span> - <span>Wedding Ceremony</span></li>
-                    <li><span>11:30 AM</span> - <span>Travel to Reception</span></li>
-                    <li><span>12:00 PM</span> - <span>Arrival & Cocktails</span></li>
-                    <li><span>12:30 PM</span> - <span>Entrance of Couple</span></li>
-                    <li><span>01:00 PM</span> - <span>Lunch & Program</span></li>
-                    <li><span>03:30 PM</span> - <span>Closing & Photo Ops</span></li>
+                    <li><span>10:00 AM</span> <span>Wedding Ceremony</span></li>
+                    <li><span>11:30 AM</span> <span>Travel to Reception</span></li>
+                    <li><span>12:00 PM</span> <span>Arrival & Cocktails</span></li>
+                    <li><span>12:30 PM</span> <span>Grand Entrance of Couple</span></li>
+                    <li><span>1:00 PM</span> <span>Lunch & Program</span></li>
+                    <li><span>3:30 PM</span> <span>Closing & Photo Ops</span></li>
                 </ul>
             </div>
         </div>
