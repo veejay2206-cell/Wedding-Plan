@@ -56,8 +56,28 @@
         }
     </style>
 </head>
-<body class="bg-navy-50 text-navy-900 antialiased selection:bg-gold-200 selection:text-navy-900">
+<body class="bg-navy-50 text-navy-900 antialiased selection:bg-gold-200 selection:text-navy-900 overflow-hidden" id="mainBody">
 
+    <!-- Welcome / Entry Modal Overlay -->
+    <div id="welcomeModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-navy-950/90 backdrop-blur-md transition-opacity duration-500 p-4">
+        <div class="text-center p-8 max-w-md w-full bg-navy-900 border border-gold-400/40 rounded-2xl shadow-2xl space-y-6">
+            <div class="space-y-2">
+                <span class="uppercase tracking-[0.3em] text-xs text-gold-300 font-medium">You are cordially invited</span>
+                <h2 class="text-5xl font-serif italic text-white">JV &amp; Kane</h2>
+                <p class="text-sm text-navy-200">May 16, 2027 • San Pablo City, Laguna</p>
+            </div>
+            
+            <p class="text-xs text-gold-200/80 italic font-serif">
+                Click below to open the invitation with ambient music.
+            </p>
+
+            <button id="enterBtn" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-semibold px-8 py-4 rounded-full uppercase tracking-wider text-sm shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                Open Invitation
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Audio Control -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
         <button id="musicToggle" class="bg-white/90 backdrop-blur-md border border-gold-300 text-gold-700 p-3 rounded-full shadow-lg hover:bg-gold-50 transition duration-300 flex items-center justify-center w-12 h-12 group relative" title="Toggle Background Music">
             <svg id="musicIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,8 +87,9 @@
         </button>
     </div>
 
-    <!-- Hidden audio element configured to autoplay -->
-    <audio id="bgMusic" loop autoplay>
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="queen.mp3" type="audio/mpeg">
         <source src="queen.mp3" type="audio/ogg">
         Your browser does not support the audio element.
     </audio>
@@ -415,19 +436,19 @@
                 <div class="bg-white p-6 rounded-2xl border border-navy-200 shadow-sm space-y-4">
                     <h3 class="text-xl font-serif font-bold text-navy-900 text-center border-b border-navy-100 pb-3">The Ceremony</h3>
                     <ul class="space-y-3 text-sm text-navy-800">
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">1:30 PM</span> <span>Guest Arrival & Seating</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">2:00 PM</span> <span>Processional & Entrance</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">2:30 PM</span> <span>Holy Matrimony & Vows</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">3:30 PM</span> <span>Recessional & Photos</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">1:30 PM</span> <span>Guest Arrival &amp; Seating</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">2:00 PM</span> <span>Processional &amp; Entrance</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">2:30 PM</span> <span>Holy Matrimony &amp; Vows</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">3:30 PM</span> <span>Recessional &amp; Photos</span></li>
                     </ul>
                 </div>
                 <div class="bg-white p-6 rounded-2xl border border-navy-200 shadow-sm space-y-4">
                     <h3 class="text-xl font-serif font-bold text-navy-900 text-center border-b border-navy-100 pb-3">The Reception</h3>
                     <ul class="space-y-3 text-sm text-navy-800">
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">4:30 PM</span> <span>Cocktails & Guest Arrival</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">4:30 PM</span> <span>Cocktails &amp; Guest Arrival</span></li>
                         <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">5:30 PM</span> <span>Grand Entrance of Couple</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">6:00 PM</span> <span>Dinner & Toasts</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">7:30 PM</span> <span>First Dance & Party</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">6:00 PM</span> <span>Dinner &amp; Toasts</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">7:30 PM</span> <span>First Dance &amp; Party</span></li>
                     </ul>
                 </div>
             </div>
@@ -463,126 +484,107 @@
 
             <form id="rsvpForm" action="https://formspree.io/f/xrpgwovw" method="POST" class="bg-navy-50 p-8 md:p-10 rounded-2xl border border-navy-200 shadow-sm space-y-6">
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-navy-700 font-semibold mb-2">Full Name(s)</label>
-                    <input type="text" name="Full Name" required placeholder="e.g., Mr. and Mrs. Smith or Guest Name" class="w-full bg-white border border-navy-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500 transition">
+                    <label for="fullName" class="block text-xs uppercase tracking-wider text-navy-700 font-semibold mb-2">Full Name(s)</label>
+                    <input type="text" id="fullName" name="name" required placeholder="John Doe & Guest" class="w-full px-4 py-3 rounded-lg border border-navy-200 bg-white text-navy-900 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500">
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-navy-700 font-semibold mb-2">Email Address</label>
-                        <input type="email" name="Email" required placeholder="your.email@example.com" class="w-full bg-white border border-navy-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-navy-700 font-semibold mb-2">Attendance</label>
-                        <select name="Attendance" class="w-full bg-white border border-navy-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500 transition">
-                            <option value="Accepts with Pleasure">Accepts with Pleasure</option>
-                            <option value="Declines with Regret">Declines with Regret</option>
-                        </select>
+                <div>
+                    <label for="email" class="block text-xs uppercase tracking-wider text-navy-700 font-semibold mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com" class="w-full px-4 py-3 rounded-lg border border-navy-200 bg-white text-navy-900 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-navy-700 font-semibold mb-2">Attendance</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="flex items-center gap-3 p-3 bg-white rounded-lg border border-navy-200 cursor-pointer hover:border-gold-400 transition">
+                            <input type="radio" name="attendance" value="attending" checked class="text-gold-600 focus:ring-gold-500">
+                            <span class="text-sm text-navy-800">Joyfully Accepts</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-white rounded-lg border border-navy-200 cursor-pointer hover:border-gold-400 transition">
+                            <input type="radio" name="attendance" value="declining" class="text-gold-600 focus:ring-gold-500">
+                            <span class="text-sm text-navy-800">Regretfully Declines</span>
+                        </label>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-navy-700 font-semibold mb-2">Dietary Restrictions or Special Notes</label>
-                    <textarea name="Notes" rows="3" placeholder="Optional notes for the couple..." class="w-full bg-white border border-navy-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500 transition"></textarea>
+                    <label for="message" class="block text-xs uppercase tracking-wider text-navy-700 font-semibold mb-2">Message for the Couple</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Warm wishes or dietary restrictions..." class="w-full px-4 py-3 rounded-lg border border-navy-200 bg-white text-navy-900 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"></textarea>
                 </div>
 
-                <button type="submit" class="w-full bg-gold-500 text-navy-950 font-semibold py-4 rounded-lg uppercase tracking-wider text-sm shadow-md hover:bg-gold-400 transition duration-300">
-                    Send RSVP Response
+                <button type="submit" class="w-full bg-gold-500 text-navy-950 font-semibold py-4 rounded-full uppercase tracking-wider text-sm shadow hover:bg-gold-400 transition duration-300">
+                    Send RSVP
                 </button>
             </form>
-
-            <div id="rsvpSuccess" class="hidden bg-gold-100 border border-gold-300 text-navy-900 p-6 rounded-xl text-center space-y-2">
-                <h3 class="text-xl font-serif font-bold">Thank You!</h3>
-                <p class="text-sm">Your response has been successfully recorded. We look forward to celebrating with you!</p>
-            </div>
         </div>
     </section>
 
-    <footer class="py-12 px-4 bg-navy-950 text-white text-center space-y-4 border-t border-navy-800">
-        <h2 class="text-3xl font-serif italic text-gold-400">JV &amp; Kane</h2>
-        <p class="text-xs uppercase tracking-[0.2em] text-navy-300">May 16, 2027 • San Pablo City Laguna</p>
-        <p class="text-xs text-navy-400 pt-6">Made with love for family &amp; friends.</p>
+    <!-- Footer -->
+    <footer class="py-8 bg-navy-950 text-navy-400 text-center text-xs">
+        <p>JV &amp; Kane Wedding Celebration • May 16, 2027</p>
     </footer>
 
+    <!-- Interactive Audio & Countdown Script -->
     <script>
-        const weddingDate = new Date("May 16, 2027 14:00:00").getTime();
+        document.addEventListener("DOMContentLoaded", () => {
+            const welcomeModal = document.getElementById("welcomeModal");
+            const enterBtn = document.getElementById("enterBtn");
+            const bgMusic = document.getElementById("bgMusic");
+            const musicToggle = document.getElementById("musicToggle");
+            const mainBody = document.getElementById("mainBody");
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+            // Play Music
+            const playAudio = () => {
+                bgMusic.play().then(() => {
+                    console.log("Audio playing");
+                }).catch(err => {
+                    console.log("Autoplay issue:", err);
+                });
+            };
 
-            if (distance < 0) {
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = String(days).padStart(2, '0');
-            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        const musicToggle = document.getElementById('musicToggle');
-        const bgMusic = document.getElementById('bgMusic');
-        let isPlaying = true;
-
-        window.addEventListener('DOMContentLoaded', () => {
-            bgMusic.play().then(() => {
-                musicToggle.classList.add('bg-gold-100');
-            }).catch(error => {
-                isPlaying = false;
-                console.log("Autoplay blocked by browser policy. User click required.");
+            // Modal Button Trigger
+            enterBtn.addEventListener("click", () => {
+                playAudio();
+                mainBody.classList.remove("overflow-hidden");
+                welcomeModal.classList.add("opacity-0", "pointer-events-none");
+                setTimeout(() => {
+                    welcomeModal.style.display = "none";
+                }, 500);
             });
-        });
 
-        musicToggle.addEventListener('click', () => {
-            if (isPlaying) {
-                bgMusic.pause();
-                musicToggle.classList.remove('bg-gold-100');
-                isPlaying = false;
-            } else {
-                bgMusic.play().catch(e => console.log("Audio play blocked"));
-                musicToggle.classList.add('bg-gold-100');
-                isPlaying = true;
-            }
-        });
-
-        const rsvpForm = document.getElementById('rsvpForm');
-        const rsvpSuccess = document.getElementById('rsvpSuccess');
-
-        rsvpForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(rsvpForm);
-            
-            try {
-                const response = await fetch(rsvpForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
+            // Music Toggle Button
+            if (musicToggle) {
+                musicToggle.addEventListener("click", () => {
+                    if (bgMusic.paused) {
+                        playAudio();
+                    } else {
+                        bgMusic.pause();
                     }
                 });
-
-                if (response.ok) {
-                    rsvpForm.style.display = 'none';
-                    rsvpSuccess.classList.remove('hidden');
-                } else {
-                    alert('Oops! There was a problem submitting your form. Please try again.');
-                }
-            } catch (error) {
-                alert('Oops! There was a network error. Please check your connection.');
             }
+
+            // Countdown Timer Script
+            const weddingDate = new Date("May 16, 2027 14:00:00").getTime();
+            
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = weddingDate - now;
+
+                if (distance < 0) return;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+            };
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
         });
     </script>
 </body>
