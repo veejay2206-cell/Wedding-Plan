@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JV & Kane Wedding Invitation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts: Cormorant Garamond at Cascadia Code (Italic) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cascadia+Code:ital,wght@1,600&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -39,7 +42,7 @@
                     },
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Montserrat"', 'sans-serif']
+                        cascadia: ['"Cascadia Code"', 'monospace'],
                     }
                 }
             }
@@ -47,12 +50,15 @@
     </script>
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             background-color: #f0f4f8;
             color: #102a43;
         }
-        h1, h2, h3, h4, .font-serif {
-            font-family: 'Cormorant Garamond', serif;
+        /* Para sa JV & Kane: Cascadia Code SemiBold Italic */
+        .font-cascadia-semibold-italic {
+            font-family: 'Cascadia Code', monospace;
+            font-weight: 600;
+            font-style: italic;
         }
     </style>
 </head>
@@ -61,29 +67,30 @@
     <!-- Welcome / Entry Modal Overlay -->
     <div id="welcomeModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-navy-950/90 backdrop-blur-md transition-opacity duration-500 p-4">
         <div class="text-center p-6 md:p-8 max-w-md w-full bg-navy-900 border border-gold-400/40 rounded-2xl shadow-2xl space-y-6">
-            <div class="space-y-2">
-                <span class="uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs text-gold-300 font-medium block">You are cordially invited</span>
-                <h2 class="text-4xl md:text-5xl font-serif italic text-white">JV &amp; Kane</h2>
-                <p class="text-xs md:text-sm text-navy-200">May 16, 2027 • San Pablo City, Laguna</p>
+            <div class="space-y-3">
+                <span class="uppercase tracking-[0.2em] text-sm text-gold-300 font-semibold block">You are cordially invited</span>
+                <!-- JV & Kane in Cascadia Code SemiBold Italic -->
+                <h2 class="text-4xl md:text-5xl font-cascadia-semibold-italic text-white tracking-wider">JV <span class="text-gold-400">&amp;</span> Kane</h2>
+                <p class="text-sm md:text-base text-navy-200 font-medium">May 16, 2027 • San Pablo City, Laguna</p>
             </div>
             
-            <p class="text-xs text-gold-200/80 italic font-serif">
+            <p class="text-sm text-gold-200/80 italic">
                 Click below to open the invitation with ambient music.
             </p>
 
-            <button id="enterBtn" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-semibold px-6 py-3.5 md:py-4 rounded-full uppercase tracking-wider text-xs md:text-sm shadow-lg transition-all duration-300 transform active:scale-95 hover:-translate-y-0.5">
+            <button id="enterBtn" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold px-6 py-4 rounded-full uppercase tracking-wider text-base shadow-lg transition-all duration-300 transform active:scale-95 hover:-translate-y-0.5">
                 Open Invitation
             </button>
         </div>
     </div>
 
     <!-- Floating Audio Control -->
-    <div class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col gap-3">
-        <button id="musicToggle" class="bg-white/90 backdrop-blur-md border border-gold-300 text-gold-700 p-3 rounded-full shadow-lg hover:bg-gold-50 active:scale-95 transition duration-300 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 group relative" title="Toggle Background Music">
-            <svg id="musicIcon" class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <button id="musicToggle" class="bg-white/90 backdrop-blur-md border border-gold-300 text-gold-700 p-3.5 rounded-full shadow-lg hover:bg-gold-50 active:scale-95 transition duration-300 flex items-center justify-center w-14 h-14 group relative" title="Toggle Background Music">
+            <svg id="musicIcon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
             </svg>
-            <span class="hidden md:block absolute right-14 bg-white px-3 py-1 rounded-md text-xs shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-gold-200 text-navy-800">Play/Pause Music</span>
+            <span class="hidden md:block absolute right-16 bg-white px-3 py-1.5 rounded-md text-xs shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-gold-200 text-navy-800">Play/Pause Music</span>
         </button>
     </div>
 
@@ -95,52 +102,60 @@
     </audio>
 
     <!-- Header Section -->
-    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 md:py-20 overflow-hidden bg-gradient-to-b from-navy-900 via-navy-950 to-navy-900 text-white">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a059_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-20 overflow-hidden text-white bg-navy-950">
+        <!-- Live Video Background -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0 opacity-40">
+            <source src="background-video.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-950/80 via-navy-950/60 to-navy-950/90 z-0"></div>
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a059_1px,transparent_1px)] [background-size:16px_16px] z-0"></div>
         
-        <div class="relative z-10 max-w-4xl mx-auto space-y-6">
-            <p class="uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-base text-gold-300 font-medium">Together with their families</p>
+        <div class="relative z-10 max-w-4xl mx-auto space-y-8">
+            <p class="uppercase tracking-[0.25em] text-base md:text-lg text-gold-300 font-semibold">Together with their families</p>
             
-            <div class="py-2 md:py-4">
-                <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white font-serif italic">
-                    JV <span class="text-3xl sm:text-4xl md:text-6xl font-normal not-italic text-gold-400">&amp;</span> Kane
+            <!-- JV & KANE Lettering - Cascadia Code SemiBold Italic -->
+            <div class="py-2">
+                <h1 class="text-6xl sm:text-7xl md:text-9xl font-cascadia-semibold-italic tracking-wider text-white drop-shadow-lg leading-tight">
+                    JV <span class="text-4xl sm:text-5xl md:text-7xl text-gold-400 mx-1">&amp;</span> KANE
                 </h1>
             </div>
 
-            <p class="text-base md:text-xl text-gold-200 font-serif italic max-w-xl mx-auto px-2">
+            <p class="text-lg md:text-xl text-gold-200 italic max-w-2xl mx-auto px-2 leading-relaxed font-medium">
                 "And over all these virtues put on love, which binds them all together in perfect unity." — Colossians 3:14
             </p>
 
-            <div class="pt-4 md:pt-6 flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-xs sm:text-sm md:text-base uppercase tracking-widest text-gold-300 font-semibold border-t border-b border-navy-700 py-4 max-w-lg mx-auto">
+            <div class="pt-6 flex flex-wrap justify-center items-center gap-2 md:gap-4 text-sm md:text-base uppercase tracking-wider text-gold-300 font-semibold border-t border-b border-gold-500/30 py-4 max-w-lg mx-auto backdrop-blur-xs px-2">
                 <span>SUNDAY</span>
                 <span>•</span>
                 <span>May 16, 2027</span>
-                <span class="hidden sm:inline">•</span>
-                <span class="w-full sm:w-auto">San Pablo City Laguna</span>
+                <span>•</span>
+                <span>San Pablo City, Laguna</span>
             </div>
 
             <!-- Countdown Timer -->
-            <div class="pt-6 md:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 max-w-xs sm:max-w-md mx-auto">
-                <div class="bg-navy-800/80 backdrop-blur border border-gold-500/30 p-3 md:p-4 rounded-xl shadow-sm text-white">
-                    <span id="days" class="text-2xl md:text-3xl font-bold text-gold-400 font-serif block">00</span>
-                    <span class="text-[10px] md:text-xs uppercase tracking-wider text-navy-300">Days</span>
+            <div class="pt-6 grid grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto">
+                <div class="bg-navy-900/80 backdrop-blur-md border border-gold-500/30 p-3 sm:p-4 rounded-xl shadow-sm text-white">
+                    <span id="days" class="text-2xl sm:text-4xl font-bold text-gold-400 block">00</span>
+                    <span class="text-xs uppercase tracking-wider text-navy-300 font-semibold">Days</span>
                 </div>
-                <div class="bg-navy-800/80 backdrop-blur border border-gold-500/30 p-3 md:p-4 rounded-xl shadow-sm text-white">
-                    <span id="hours" class="text-2xl md:text-3xl font-bold text-gold-400 font-serif block">00</span>
-                    <span class="text-[10px] md:text-xs uppercase tracking-wider text-navy-300">Hours</span>
+                <div class="bg-navy-900/80 backdrop-blur-md border border-gold-500/30 p-3 sm:p-4 rounded-xl shadow-sm text-white">
+                    <span id="hours" class="text-2xl sm:text-4xl font-bold text-gold-400 block">00</span>
+                    <span class="text-xs uppercase tracking-wider text-navy-300 font-semibold">Hours</span>
                 </div>
-                <div class="bg-navy-800/80 backdrop-blur border border-gold-500/30 p-3 md:p-4 rounded-xl shadow-sm text-white">
-                    <span id="minutes" class="text-2xl md:text-3xl font-bold text-gold-400 font-serif block">00</span>
-                    <span class="text-[10px] md:text-xs uppercase tracking-wider text-navy-300">Minutes</span>
+                <div class="bg-navy-900/80 backdrop-blur-md border border-gold-500/30 p-3 sm:p-4 rounded-xl shadow-sm text-white">
+                    <span id="minutes" class="text-2xl sm:text-4xl font-bold text-gold-400 block">00</span>
+                    <span class="text-xs uppercase tracking-wider text-navy-300 font-semibold">Minutes</span>
                 </div>
-                <div class="bg-navy-800/80 backdrop-blur border border-gold-500/30 p-3 md:p-4 rounded-xl shadow-sm text-white">
-                    <span id="seconds" class="text-2xl md:text-3xl font-bold text-gold-400 font-serif block">00</span>
-                    <span class="text-[10px] md:text-xs uppercase tracking-wider text-navy-300">Seconds</span>
+                <div class="bg-navy-900/80 backdrop-blur-md border border-gold-500/30 p-3 sm:p-4 rounded-xl shadow-sm text-white">
+                    <span id="seconds" class="text-2xl sm:text-4xl font-bold text-gold-400 block">00</span>
+                    <span class="text-xs uppercase tracking-wider text-navy-300 font-semibold">Seconds</span>
                 </div>
             </div>
 
-            <div class="pt-6 md:pt-10">
-                <a href="#rsvp" class="inline-block bg-gold-500 text-navy-950 px-7 py-3.5 md:px-8 md:py-4 rounded-full uppercase tracking-wider text-xs md:text-sm font-semibold shadow-lg hover:bg-gold-400 active:scale-95 transition duration-300">
+            <div class="pt-8">
+                <a href="#rsvp" class="inline-block bg-gold-500 text-navy-950 px-8 py-4 rounded-full uppercase tracking-wider text-base font-bold shadow-lg hover:bg-gold-400 active:scale-95 transition duration-300">
                     RSVP to Celebration
                 </a>
             </div>
@@ -150,28 +165,28 @@
     <!-- When & Where -->
     <section id="details" class="py-16 md:py-24 px-4 bg-white text-navy-900">
         <div class="max-w-6xl mx-auto text-center space-y-12 md:space-y-16">
-            <div class="space-y-3 md:space-y-4">
-                <span class="text-gold-600 uppercase tracking-[0.2em] text-xs font-semibold">Save The Date</span>
-                <h2 class="text-3xl md:text-5xl font-serif text-navy-900">When &amp; Where</h2>
+            <div class="space-y-3">
+                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">Save The Date</span>
+                <h2 class="text-3xl md:text-5xl font-semibold text-navy-900">When &amp; Where</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                 <!-- Ceremony Card -->
                 <div class="bg-navy-50 rounded-2xl border border-navy-200 shadow-sm overflow-hidden flex flex-col justify-between text-center">
-                    <div class="relative h-48 sm:h-56 w-full bg-navy-200">
+                    <div class="relative h-60 w-full bg-navy-200">
                         <img src="churches_1472197280_4614_3700.jpg" alt="Nuestra Señora delos Remedios Parish" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy-950/60 to-transparent flex items-end justify-center pb-4">
-                            <span class="text-white text-[10px] md:text-xs uppercase tracking-widest bg-navy-900/80 px-3 py-1 rounded-full border border-gold-500/30">Ceremony Venue</span>
+                            <span class="text-white text-xs md:text-sm uppercase tracking-wider bg-navy-900/80 px-4 py-1.5 rounded-full border border-gold-500/30 font-semibold">Ceremony Venue</span>
                         </div>
                     </div>
                     <div class="p-6 md:p-8 space-y-4 flex-1 flex flex-col justify-between">
                         <div class="space-y-2">
-                            <h3 class="text-xl md:text-2xl font-serif font-bold text-navy-900">Nuestra Señora delos Remedios Parish</h3>
-                            <p class="text-xs md:text-sm text-navy-600">San Pablo City, Laguna</p>
-                            <p class="text-xs md:text-sm font-semibold text-gold-700 pt-1">Two O'Clock in the Afternoon</p>
+                            <h3 class="text-2xl md:text-3xl font-semibold text-navy-900">Nuestra Señora delos Remedios Parish</h3>
+                            <p class="text-base text-navy-600">San Pablo City, Laguna</p>
+                            <p class="text-base md:text-lg font-semibold text-gold-700 pt-1">Two O'Clock in the Afternoon</p>
                         </div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Nuestra+Senora+delos+Remedios+Parish+San+Pablo+City+Laguna" target="_blank" rel="noopener noreferrer" class="inline-block border border-gold-500 text-gold-700 py-2.5 px-5 md:px-6 rounded-full text-xs md:text-sm font-medium hover:bg-gold-500 hover:text-white active:scale-95 transition duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nuestra+Senora+delos+Remedios+Parish+San+Pablo+City+Laguna" target="_blank" rel="noopener noreferrer" class="inline-block border border-gold-500 text-gold-700 py-3 px-6 rounded-full text-sm font-semibold hover:bg-gold-500 hover:text-white active:scale-95 transition duration-300 mt-2">
                             View Map &amp; Directions
                         </a>
                     </div>
@@ -179,19 +194,19 @@
 
                 <!-- Reception Card -->
                 <div class="bg-navy-50 rounded-2xl border border-navy-200 shadow-sm overflow-hidden flex flex-col justify-between text-center">
-                    <div class="relative h-48 sm:h-56 w-full bg-navy-200">
+                    <div class="relative h-60 w-full bg-navy-200">
                         <img src="5723aee3.avif" alt="Angela's Resort and Leisure Farm San Pablo" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy-950/60 to-transparent flex items-end justify-center pb-4">
-                            <span class="text-white text-[10px] md:text-xs uppercase tracking-widest bg-navy-900/80 px-3 py-1 rounded-full border border-gold-500/30">Reception Venue</span>
+                            <span class="text-white text-xs md:text-sm uppercase tracking-wider bg-navy-900/80 px-4 py-1.5 rounded-full border border-gold-500/30 font-semibold">Reception Venue</span>
                         </div>
                     </div>
                     <div class="p-6 md:p-8 space-y-4 flex-1 flex flex-col justify-between">
                         <div class="space-y-2">
-                            <h3 class="text-xl md:text-2xl font-serif font-bold text-navy-900">Angela's Resort and Leisure Farm</h3>
-                            <p class="text-xs md:text-sm text-navy-600">San Pablo City, Laguna</p>
-                            <p class="text-xs md:text-sm font-semibold text-gold-700 pt-1">Immediately Following the Ceremony</p>
+                            <h3 class="text-2xl md:text-3xl font-semibold text-navy-900">Angela's Resort and Leisure Farm</h3>
+                            <p class="text-base text-navy-600">San Pablo City, Laguna</p>
+                            <p class="text-base md:text-lg font-semibold text-gold-700 pt-1">Immediately Following the Ceremony</p>
                         </div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Angelass+Resort+and+Leisure+Farm+San+Pablo+Laguna" target="_blank" rel="noopener noreferrer" class="inline-block border border-gold-500 text-gold-700 py-2.5 px-5 md:px-6 rounded-full text-xs md:text-sm font-medium hover:bg-gold-500 hover:text-white active:scale-95 transition duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Angelass+Resort+and+Leisure+Farm+San+Pablo+Laguna" target="_blank" rel="noopener noreferrer" class="inline-block border border-gold-500 text-gold-700 py-3 px-6 rounded-full text-sm font-semibold hover:bg-gold-500 hover:text-white active:scale-95 transition duration-300 mt-2">
                             View Map &amp; Directions
                         </a>
                     </div>
@@ -201,42 +216,42 @@
     </section>
 
     <!-- Route Reference -->
-    <section class="py-12 md:py-16 px-4 bg-navy-50 border-t border-b border-navy-200 text-navy-900">
-        <div class="max-w-4xl mx-auto space-y-6 md:space-y-8 text-center">
-            <div class="space-y-2 md:space-y-3">
-                <span class="text-gold-600 uppercase tracking-[0.2em] text-xs font-semibold">Travel Guide</span>
-                <h2 class="text-2xl md:text-4xl font-serif text-navy-900">Church to Reception Route Reference</h2>
+    <section class="py-16 px-4 bg-navy-50 border-t border-b border-navy-200 text-navy-900">
+        <div class="max-w-4xl mx-auto space-y-8 text-center">
+            <div class="space-y-3">
+                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">Travel Guide</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-navy-900">Church to Reception Route Reference</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
-                <p class="text-xs md:text-sm text-navy-600 max-w-xl mx-auto">Here is a general route reference to guide you smoothly from the ceremony site to the reception venue.</p>
+                <p class="text-base text-navy-600 max-w-xl mx-auto">Here is a general route reference to guide you smoothly from the ceremony site to the reception venue.</p>
             </div>
 
-            <div class="bg-white p-5 md:p-8 rounded-2xl border border-navy-200 shadow-sm text-left space-y-5 md:space-y-6">
-                <div class="flex items-start gap-3 md:gap-4">
-                    <div class="w-7 h-7 md:w-8 md:h-8 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-bold shrink-0 text-xs md:text-sm mt-0.5">1</div>
+            <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm text-left space-y-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-bold shrink-0 text-base mt-0.5">1</div>
                     <div>
-                        <h4 class="font-serif font-bold text-base md:text-lg text-navy-900">Starting Point: Nuestra Señora delos Remedios Parish</h4>
-                        <p class="text-xs md:text-sm text-navy-700">Head out toward the main access road or local highway layout in San Pablo City.</p>
+                        <h4 class="font-semibold text-lg md:text-xl text-navy-900">Starting Point: Nuestra Señora delos Remedios Parish</h4>
+                        <p class="text-base text-navy-700">Head out toward the main access road or local highway layout in San Pablo City.</p>
                     </div>
                 </div>
 
-                <div class="flex items-start gap-3 md:gap-4">
-                    <div class="w-7 h-7 md:w-8 md:h-8 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-bold shrink-0 text-xs md:text-sm mt-0.5">2</div>
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-bold shrink-0 text-base mt-0.5">2</div>
                     <div>
-                        <h4 class="font-serif font-bold text-base md:text-lg text-navy-900">Navigating San Pablo City Proper</h4>
-                        <p class="text-xs md:text-sm text-navy-700">Drive through local connecting routes or city thoroughfares toward the destination area.</p>
+                        <h4 class="font-semibold text-lg md:text-xl text-navy-900">Navigating San Pablo City Proper</h4>
+                        <p class="text-base text-navy-700">Drive through local connecting routes or city thoroughfares toward the destination area.</p>
                     </div>
                 </div>
 
-                <div class="flex items-start gap-3 md:gap-4">
-                    <div class="w-7 h-7 md:w-8 md:h-8 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-bold shrink-0 text-xs md:text-sm mt-0.5">3</div>
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-bold shrink-0 text-base mt-0.5">3</div>
                     <div>
-                        <h4 class="font-serif font-bold text-base md:text-lg text-navy-900">Arrival: Angela's Resort and Leisure Farm</h4>
-                        <p class="text-xs md:text-sm text-navy-700">Turn into the resort entrance gates to join the cocktail hour and reception celebration.</p>
+                        <h4 class="font-semibold text-lg md:text-xl text-navy-900">Arrival: Angela's Resort and Leisure Farm</h4>
+                        <p class="text-base text-navy-700">Turn into the resort entrance gates to join the cocktail hour and reception celebration.</p>
                     </div>
                 </div>
 
-                <div class="pt-2 md:pt-4 text-center border-t border-navy-100">
-                    <a href="https://www.google.com/maps/dir/?api=1&origin=Nuestra+Senora+delos+Remedios+Parish+San+Pablo+City+Laguna&destination=Angelass+Resort+and+Leisure+Farm+San+Pablo+Laguna" target="_blank" rel="noopener noreferrer" class="inline-block bg-gold-500 text-navy-950 px-5 py-3 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-semibold shadow hover:bg-gold-400 active:scale-95 transition duration-300">
+                <div class="pt-4 text-center border-t border-navy-100">
+                    <a href="https://www.google.com/maps/dir/?api=1&origin=Nuestra+Senora+delos+Remedios+Parish+San+Pablo+City+Laguna&destination=Angelass+Resort+and+Leisure+Farm+San+Pablo+Laguna" target="_blank" rel="noopener noreferrer" class="inline-block bg-gold-500 text-navy-950 px-6 py-3.5 rounded-full text-sm font-bold shadow hover:bg-gold-400 active:scale-95 transition duration-300">
                         Open Full Route in Google Maps
                     </a>
                 </div>
@@ -246,23 +261,23 @@
 
     <!-- Parents Section -->
     <section class="py-16 md:py-20 px-4 bg-navy-900 text-white">
-        <div class="max-w-4xl mx-auto text-center space-y-8 md:space-y-12">
-            <div class="space-y-2 md:space-y-3">
-                <span class="text-gold-400 uppercase tracking-[0.2em] text-xs font-semibold">Honored Family</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-white">Parents of the Couple</h2>
+        <div class="max-w-4xl mx-auto text-center space-y-10 md:space-y-12">
+            <div class="space-y-3">
+                <span class="text-gold-400 uppercase tracking-[0.2em] text-sm font-semibold">Honored Family</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-white">Parents of the Couple</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 md:gap-10">
-                <div class="bg-navy-800 p-6 md:p-8 rounded-2xl border border-navy-700 shadow-sm space-y-3 md:space-y-4">
-                    <p class="uppercase tracking-widest text-[10px] md:text-xs text-gold-400 font-semibold">Parents of the Bride</p>
-                    <h3 class="text-xl md:text-2xl font-serif text-white font-medium">Mr. Nolan Bueno &amp; Mrs. Rita Bueno</h3>
-                    <p class="text-xs md:text-sm text-navy-300 italic font-serif">"With love and guiding wisdom"</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                <div class="bg-navy-800 p-6 md:p-8 rounded-2xl border border-navy-700 shadow-sm space-y-3">
+                    <p class="uppercase tracking-wider text-xs md:text-sm text-gold-400 font-semibold">Parents of the Bride</p>
+                    <h3 class="text-xl md:text-2xl font-semibold text-white">Mr. Nolan Bueno &amp; Mrs. Rita Bueno</h3>
+                    <p class="text-base text-navy-300 italic">"With love and guiding wisdom"</p>
                 </div>
-                <div class="bg-navy-800 p-6 md:p-8 rounded-2xl border border-navy-700 shadow-sm space-y-3 md:space-y-4">
-                    <p class="uppercase tracking-widest text-[10px] md:text-xs text-gold-400 font-semibold">Parents of the Groom</p>
-                    <h3 class="text-xl md:text-2xl font-serif text-white font-medium">Mr. Gil Tucino &amp; Mrs. Criselda Tucino</h3>
-                    <p class="text-xs md:text-sm text-navy-300 italic font-serif">"With pride and enduring blessing"</p>
+                <div class="bg-navy-800 p-6 md:p-8 rounded-2xl border border-navy-700 shadow-sm space-y-3">
+                    <p class="uppercase tracking-wider text-xs md:text-sm text-gold-400 font-semibold">Parents of the Groom</p>
+                    <h3 class="text-xl md:text-2xl font-semibold text-white">Mr. Gil Tucino &amp; Mrs. Criselda Tucino</h3>
+                    <p class="text-base text-navy-300 italic">"With pride and enduring blessing"</p>
                 </div>
             </div>
         </div>
@@ -270,68 +285,66 @@
 
     <!-- Principal Sponsors -->
     <section class="py-16 md:py-20 px-4 bg-white text-navy-900">
-        <div class="max-w-4xl mx-auto text-center space-y-8 md:space-y-12">
-            <div class="space-y-2 md:space-y-3">
-                <span class="text-gold-600 uppercase tracking-[0.2em] text-xs font-semibold">Guiding Lights</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-navy-900">Principal Sponsors</h2>
+        <div class="max-w-4xl mx-auto text-center space-y-10 md:space-y-12">
+            <div class="space-y-3">
+                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">Guiding Lights</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-navy-900">Principal Sponsors</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 text-navy-800">
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Chairman Michael Capuno &amp; Mrs. Yette Quinita</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Ronnie Milan &amp; Mrs. Joyet Milan</p></div>
-                 <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Husband &amp; Mrs. Precy Dacpano</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Vic Alforja &amp; Mrs. Fely Alforja</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Thano Avenido &amp; Mrs. Cora Avenido</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Anranee de Luna &amp; Mrs. Edna Silva</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Aldrin Balaaldia	 &amp; Mrs. Venus Endozo Florentino</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Eddie Evangelista &amp; Mrs. Fanny Conde</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Sonny Bituin &amp; Mrs. Rodora Agdon</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Donato Reyes &amp; Mrs. Precy Gabayanan</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Hon. Jaime Medalla  &amp; Mrs. Melba Tiquis</p></div>
-                <div class="bg-navy-50 p-3.5 md:p-4 rounded-xl border border-navy-200"><p class="font-serif text-base md:text-lg font-medium">Mr. Eufracio Ciabal &amp; Mrs. </p></div>
-               
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-navy-800 text-base md:text-lg">
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Chairman Michael Capuno &amp; Mrs. Yette Quinita</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Ronnie Milan &amp; Mrs. Joyet Milan</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Husband &amp; Mrs. Precy Dacpano</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Vic Alforja &amp; Mrs. Fely Alforja</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Thano Avenido &amp; Mrs. Cora Avenido</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Anranee de Luna &amp; Mrs. Edna Silva</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Aldrin Balaaldia &amp; Mrs. Venus Endozo Florentino</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Eddie Evangelista &amp; Mrs. Fanny Conde</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Sonny Bituin &amp; Mrs. Rodora Agdon</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Donato Reyes &amp; Mrs. Precy Gabayanan</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Hon. Jaime Medalla &amp; Mrs. Melba Tiquis</p></div>
+                <div class="bg-navy-50 p-4 rounded-xl border border-navy-200"><p class="font-semibold">Mr. Eufracio Ciabal &amp; Mrs. </p></div>
             </div>
         </div>
     </section>
 
     <!-- Entourage Section -->
     <section class="py-16 md:py-20 px-4 bg-navy-50 text-navy-900">
-        <div class="max-w-5xl mx-auto text-center space-y-10 md:space-y-16">
-            <div class="space-y-2 md:space-y-3">
-                <span class="text-gold-600 uppercase tracking-[0.2em] text-xs font-semibold">The Wedding Party</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-navy-900">The Entourage</h2>
+        <div class="max-w-5xl mx-auto text-center space-y-12 md:space-y-16">
+            <div class="space-y-3">
+                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">The Wedding Party</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-navy-900">The Entourage</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
             </div>
 
             <!-- Maid of Honor & Best Man -->
-            <div class="grid md:grid-cols-2 gap-4 md:gap-8 max-w-2xl mx-auto">
-                <div class="bg-white p-5 md:p-6 rounded-2xl border border-navy-200 shadow-sm">
-                    <p class="uppercase tracking-widest text-[10px] md:text-xs text-gold-600 font-semibold mb-1 md:mb-2">Maid of Honor</p>
-                    <h3 class="text-xl md:text-2xl font-serif text-navy-900">Alory Viterbo</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <div class="bg-white p-6 rounded-2xl border border-navy-200 shadow-sm">
+                    <p class="uppercase tracking-wider text-xs md:text-sm text-gold-600 font-semibold mb-2">Maid of Honor</p>
+                    <h3 class="text-2xl md:text-3xl font-semibold text-navy-900">Alory Viterbo</h3>
                 </div>
-                <div class="bg-white p-5 md:p-6 rounded-2xl border border-navy-200 shadow-sm">
-                    <p class="uppercase tracking-widest text-[10px] md:text-xs text-gold-600 font-semibold mb-1 md:mb-2">Best Man</p>
-                    <h3 class="text-xl md:text-2xl font-serif text-navy-900">Dannie Conde</h3>
+                <div class="bg-white p-6 rounded-2xl border border-navy-200 shadow-sm">
+                    <p class="uppercase tracking-wider text-xs md:text-sm text-gold-600 font-semibold mb-2">Best Man</p>
+                    <h3 class="text-2xl md:text-3xl font-semibold text-navy-900">Dannie Conde</h3>
                 </div>
             </div>
 
             <!-- Bridesmaids & Groomsmen -->
-            <div class="grid md:grid-cols-2 gap-6 md:gap-10 text-center">
-                <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-3 md:space-y-4">
-                    <h3 class="text-lg md:text-xl font-serif font-bold text-navy-900 border-b border-navy-100 pb-2 md:pb-3">Bridesmaids</h3>
-                    <ul class="space-y-1.5 md:space-y-2 font-serif text-base md:text-lg text-navy-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center">
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-4">
+                    <h3 class="text-2xl font-semibold text-navy-900 border-b border-navy-100 pb-3">Bridesmaids</h3>
+                    <ul class="space-y-2.5 text-base md:text-lg text-navy-800">
                         <li>Ms. Rianne Denise Endozo</li>
                         <li>Ms. Alyssa Marithe Ramos</li>
                         <li>Ms. Anna Joyce Bueno</li>
                         <li>Ms. Mariah Miciel Ramos</li>
                         <li>Ms. Daisy Tiquis</li>
-                        <li></li>
                     </ul>
                 </div>
-                <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-3 md:space-y-4">
-                    <h3 class="text-lg md:text-xl font-serif font-bold text-navy-900 border-b border-navy-100 pb-2 md:pb-3">Groomsmen</h3>
-                    <ul class="space-y-1.5 md:space-y-2 font-serif text-base md:text-lg text-navy-800">
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-4">
+                    <h3 class="text-2xl font-semibold text-navy-900 border-b border-navy-100 pb-3">Groomsmen</h3>
+                    <ul class="space-y-2.5 text-base md:text-lg text-navy-800">
                         <li>Mr. John Francis Tucino</li>
                         <li>Mr. John Christian Tucino</li>
                         <li>Mr. Dannie Conde</li>
@@ -342,20 +355,20 @@
             </div>
 
             <!-- Secondary Sponsors -->
-            <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm max-w-3xl mx-auto space-y-4 md:space-y-6">
-                <h3 class="text-lg md:text-xl font-serif font-bold text-navy-900">Secondary Sponsors</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 text-sm">
-                    <div class="space-y-0.5">
-                        <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600">Candle</p>
-                        <p class="font-serif text-base text-navy-800">Liam &amp; Grace Parker</p>
+            <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm max-w-3xl mx-auto space-y-6">
+                <h3 class="text-2xl font-semibold text-navy-900">Secondary Sponsors</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-base">
+                    <div class="space-y-1">
+                        <p class="uppercase tracking-wider font-semibold text-gold-600 text-xs md:text-sm">Candle</p>
+                        <p class="text-navy-800 font-medium">Liam &amp; Grace Parker</p>
                     </div>
-                    <div class="space-y-0.5">
-                        <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600">Veil</p>
-                        <p class="font-serif text-base text-navy-800">Nathan &amp; Sarah Cruz</p>
+                    <div class="space-y-1">
+                        <p class="uppercase tracking-wider font-semibold text-gold-600 text-xs md:text-sm">Veil</p>
+                        <p class="text-navy-800 font-medium">Nathan &amp; Sarah Cruz</p>
                     </div>
-                    <div class="space-y-0.5">
-                        <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600">Cord</p>
-                        <p class="font-serif text-base text-navy-800">Benjamin &amp; Anna Lee</p>
+                    <div class="space-y-1">
+                        <p class="uppercase tracking-wider font-semibold text-gold-600 text-xs md:text-sm">Cord</p>
+                        <p class="text-navy-800 font-medium">Benjamin &amp; Anna Lee</p>
                     </div>
                 </div>
             </div>
@@ -363,28 +376,28 @@
             <!-- Bearers & Flower Girls -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto">
                 <div class="bg-white p-5 rounded-xl border border-navy-200 text-center">
-                    <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600 mb-1">Ring Bearer</p>
-                    <p class="font-serif text-base md:text-lg text-navy-800">Zephyr Maranan</p>
+                    <p class="uppercase tracking-wider text-xs font-semibold text-gold-600 mb-1">Ring Bearer</p>
+                    <p class="text-base md:text-lg text-navy-800 font-semibold">Zephyr Maranan</p>
                 </div>
                 <div class="bg-white p-5 rounded-xl border border-navy-200 text-center">
-                    <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600 mb-1">Coin Bearer</p>
-                    <p class="font-serif text-base md:text-lg text-navy-800">Drex Endozo </p>
+                    <p class="uppercase tracking-wider text-xs font-semibold text-gold-600 mb-1">Coin Bearer</p>
+                    <p class="text-base md:text-lg text-navy-800 font-semibold">Drex Endozo</p>
                 </div>
                 <div class="bg-white p-5 rounded-xl border border-navy-200 text-center">
-                    <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600 mb-1">Bible Bearer</p>
-                    <p class="font-serif text-base md:text-lg text-navy-800">Ryle Endozo </p>
+                    <p class="uppercase tracking-wider text-xs font-semibold text-gold-600 mb-1">Bible Bearer</p>
+                    <p class="text-base md:text-lg text-navy-800 font-semibold">Ryle Endozo</p>
                 </div>
                 <div class="bg-white p-5 rounded-xl border border-navy-200 text-center">
-                    <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600 mb-1">Flower Girl 1</p>
-                    <p class="font-serif text-base md:text-lg text-navy-800">Raven Leigh Mojica </p>
+                    <p class="uppercase tracking-wider text-xs font-semibold text-gold-600 mb-1">Flower Girl 1</p>
+                    <p class="text-base md:text-lg text-navy-800 font-semibold">Raven Leigh Mojica</p>
                 </div>
                 <div class="bg-white p-5 rounded-xl border border-navy-200 text-center">
-                    <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600 mb-1">Flower Girl 2</p>
-                    <p class="font-serif text-base md:text-lg text-navy-800">Xam Endozo</p>
+                    <p class="uppercase tracking-wider text-xs font-semibold text-gold-600 mb-1">Flower Girl 2</p>
+                    <p class="text-base md:text-lg text-navy-800 font-semibold">Xam Endozo</p>
                 </div>
                 <div class="bg-white p-5 rounded-xl border border-navy-200 text-center">
-                    <p class="uppercase tracking-wider text-[10px] md:text-xs font-semibold text-gold-600 mb-1">Flower Girl 3</p>
-                    <p class="font-serif text-base md:text-lg text-navy-800">Isabella Louise Villanueva</p>
+                    <p class="uppercase tracking-wider text-xs font-semibold text-gold-600 mb-1">Flower Girl 3</p>
+                    <p class="text-base md:text-lg text-navy-800 font-semibold">Isabella Louise Villanueva</p>
                 </div>
             </div>
         </div>
@@ -392,40 +405,40 @@
 
     <!-- Wedding Attire Guidelines -->
     <section class="py-16 md:py-20 px-4 bg-white text-navy-900">
-        <div class="max-w-5xl mx-auto text-center space-y-8 md:space-y-12">
-            <div class="space-y-2 md:space-y-3">
-                <span class="text-gold-600 uppercase tracking-[0.2em] text-xs font-semibold">Dress Code</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-navy-900">Wedding Attire</h2>
+        <div class="max-w-5xl mx-auto text-center space-y-10 md:space-y-12">
+            <div class="space-y-3">
+                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">Dress Code</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-navy-900">Wedding Attire</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
-                <p class="text-xs md:text-sm text-navy-600 font-medium">Color Palette: <span class="text-navy-900 font-bold">Navy Blue</span> &amp; <span class="text-gold-600 font-bold">Gold</span></p>
+                <p class="text-base md:text-lg text-navy-600 font-medium">Color Palette: <span class="text-navy-900 font-bold">Navy Blue</span> &amp; <span class="text-gold-600 font-bold">Gold</span></p>
                 
-                <div class="flex justify-center items-center gap-4 pt-2">
+                <div class="flex justify-center items-center gap-6 pt-2">
                     <div class="flex items-center gap-2">
-                        <span class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-navy-900 border border-navy-700 inline-block shadow-sm"></span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-wider text-navy-800 font-semibold">Navy Blue</span>
+                        <span class="w-7 h-7 rounded-full bg-navy-900 border border-navy-700 inline-block shadow-sm"></span>
+                        <span class="text-xs md:text-sm uppercase tracking-wider text-navy-800 font-semibold">Navy Blue</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-gold-500 border border-gold-600 inline-block shadow-sm"></span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-wider text-gold-700 font-semibold">Gold</span>
+                        <span class="w-7 h-7 rounded-full bg-gold-500 border border-gold-600 inline-block shadow-sm"></span>
+                        <span class="text-xs md:text-sm uppercase tracking-wider text-gold-700 font-semibold">Gold</span>
                     </div>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-center">
-                <div class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-3 md:space-y-4">
-                    <h3 class="text-lg md:text-xl font-serif font-bold text-navy-900">Principal Sponsors</h3>
-                    <p class="text-xs md:text-sm text-navy-700"><strong>Men:</strong> Suit with Tie (Navy Blue or Classic Black)</p>
-                    <p class="text-xs md:text-sm text-navy-700"><strong>Women:</strong> Long Formal Gown (Gold or Champagne tone)</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-3">
+                    <h3 class="text-xl md:text-2xl font-semibold text-navy-900">Principal Sponsors</h3>
+                    <p class="text-base text-navy-700"><strong>Men:</strong> Suit with Tie (Navy Blue or Classic Black)</p>
+                    <p class="text-base text-navy-700"><strong>Women:</strong> Long Formal Gown (Gold or Champagne tone)</p>
                 </div>
-                <div class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-3 md:space-y-4">
-                    <h3 class="text-lg md:text-xl font-serif font-bold text-navy-900">Entourage</h3>
-                    <p class="text-xs md:text-sm text-navy-700"><strong>Men:</strong> Suit / Barong Tagalog</p>
-                    <p class="text-xs md:text-sm text-navy-700"><strong>Women:</strong> Designated Entourage Gown / Dress</p>
+                <div class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-3">
+                    <h3 class="text-xl md:text-2xl font-semibold text-navy-900">Entourage</h3>
+                    <p class="text-base text-navy-700"><strong>Men:</strong> Suit / Barong Tagalog</p>
+                    <p class="text-base text-navy-700"><strong>Women:</strong> Designated Entourage Gown / Dress</p>
                 </div>
-                <div class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-3 md:space-y-4">
-                    <h3 class="text-lg md:text-xl font-serif font-bold text-navy-900">Guest Attire</h3>
-                    <p class="text-xs md:text-sm text-navy-700"><strong>Formal / Semi-Formal</strong></p>
-                    <p class="text-xs md:text-sm text-navy-600">Men: Suit or Long Sleeves<br>Women: Floor or Midi-length Dress<br><em>Please avoid wearing Navy Blue and White.</em></p>
+                <div class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-3">
+                    <h3 class="text-xl md:text-2xl font-semibold text-navy-900">Guest Attire</h3>
+                    <p class="text-base text-navy-700"><strong>Formal / Semi-Formal</strong></p>
+                    <p class="text-sm text-navy-600">Men: Suit or Long Sleeves<br>Women: Floor or Midi-length Dress<br><em class="font-medium text-red-800">Please avoid wearing Navy Blue and White.</em></p>
                 </div>
             </div>
         </div>
@@ -433,180 +446,163 @@
 
     <!-- Order of Events -->
     <section class="py-16 md:py-20 px-4 bg-navy-50 text-navy-900">
-        <div class="max-w-4xl mx-auto text-center space-y-8 md:space-y-12">
-            <div class="space-y-2 md:space-y-3">
-                <span class="text-gold-600 uppercase tracking-[0.2em] text-xs font-semibold">Program Flow</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-navy-900">Order of Events</h2>
+        <div class="max-w-4xl mx-auto text-center space-y-10 md:space-y-12">
+            <div class="space-y-3">
+                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">Program Flow</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-navy-900">Order of Events</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 text-left">
-                <div class="bg-white p-5 md:p-6 rounded-2xl border border-navy-200 shadow-sm space-y-4">
-                    <h3 class="text-lg md:text-xl font-serif font-bold text-navy-900 text-center border-b border-navy-100 pb-3">The Ceremony</h3>
-                    <ul class="space-y-3 text-xs md:text-sm text-navy-800">
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">1:30 PM</span> <span>Guest Arrival &amp; Seating</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">2:00 PM</span> <span>Processional &amp; Entrance</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">2:30 PM</span> <span>Holy Matrimony &amp; Vows</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">3:30 PM</span> <span>Recessional &amp; Photos</span></li>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-4">
+                    <h3 class="text-2xl font-semibold text-navy-900 text-center border-b border-navy-100 pb-3">The Ceremony</h3>
+                    <ul class="space-y-3 text-base text-navy-800">
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">1:30 PM</span> <span>Guest Arrival &amp; Seating</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">2:00 PM</span> <span>Processional &amp; Entrance</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">2:30 PM</span> <span>Nuptial Mass &amp; Vows</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">3:30 PM</span> <span>Exchange of Rings &amp; Blessing</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">4:00 PM</span> <span>Pictorial &amp; Recessional</span></li>
                     </ul>
                 </div>
-                <div class="bg-white p-5 md:p-6 rounded-2xl border border-navy-200 shadow-sm space-y-4">
-                    <h3 class="text-lg md:text-xl font-serif font-bold text-navy-900 text-center border-b border-navy-100 pb-3">The Reception</h3>
-                    <ul class="space-y-3 text-xs md:text-sm text-navy-800">
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">4:30 PM</span> <span>Cocktails &amp; Guest Arrival</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">5:30 PM</span> <span>Grand Entrance of Couple</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">6:00 PM</span> <span>Dinner &amp; Toasts</span></li>
-                        <li class="flex justify-between items-center"><span class="font-semibold text-gold-700">7:30 PM</span> <span>First Dance &amp; Party</span></li>
+
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-4">
+                    <h3 class="text-2xl font-semibold text-navy-900 text-center border-b border-navy-100 pb-3">The Reception</h3>
+                    <ul class="space-y-3 text-base text-navy-800">
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">5:00 PM</span> <span>Cocktail Hour &amp; Registration</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">6:00 PM</span> <span>Grand Entrance of the Couple</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">6:30 PM</span> <span>Dinner &amp; First Dance</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">7:30 PM</span> <span>Toasts, Cake Cutting &amp; Games</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">8:30 PM</span> <span>Open Dance Floor &amp; Socials</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gift Preferences -->
-    <section class="py-16 md:py-20 px-4 bg-navy-900 text-white text-center">
-        <div class="max-w-3xl mx-auto space-y-5 md:space-y-6">
-            <span class="text-gold-400 uppercase tracking-[0.2em] text-xs font-semibold">Registry</span>
-            <h2 class="text-3xl md:text-4xl font-serif text-white">Gift Preferences</h2>
-            <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
-            <p class="text-navy-200 font-serif text-base md:text-lg leading-relaxed max-w-xl mx-auto px-2">
-                "With all that we have, we are truly blessed. Your presence and prayers are our favorite request. If you wish to give a token of love to help us start, monetary gifts are warmly appreciated from the heart."
+    <!-- Gift Registry & Details -->
+    <section class="py-16 md:py-20 px-4 bg-white text-navy-900">
+        <div class="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
+            <div class="space-y-3">
+                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">Gifts &amp; Token</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-navy-900">Gift Guide</h2>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
+            </div>
+            
+            <p class="text-navy-700 leading-relaxed text-base md:text-xl font-medium">
+                With all that we have, we are truly blessed. Your presence and prayers on our special day are the greatest gifts of all. 
+                However, if you wish to honor us with a gift, a monetary contribution toward building our future home would be warmly appreciated.
             </p>
-            <div class="bg-navy-800 p-5 md:p-6 rounded-xl border border-navy-700 max-w-md mx-auto space-y-1.5 md:space-y-2">
-                <p class="text-[10px] md:text-xs uppercase tracking-wider text-gold-400 font-semibold">Digital Envelopes / GCash / Bank</p>
-                <p class="text-xs md:text-sm text-navy-200">Account Details available upon request or at the reception gift table.</p>
-            </div>
         </div>
     </section>
 
-    <!-- RSVP Form Section -->
-    <section id="rsvp" class="py-16 md:py-24 px-4 bg-white text-navy-900">
-        <div class="max-w-2xl mx-auto text-center space-y-8 md:space-y-12">
-            <div class="space-y-3 md:space-y-4">
-                <span class="text-gold-600 uppercase tracking-[0.2em] text-xs font-semibold">Join Our Celebration</span>
-                <h2 class="text-3xl md:text-5xl font-serif text-navy-900">RSVP</h2>
+    <!-- RSVP Section -->
+    <section id="rsvp" class="py-20 md:py-24 px-4 bg-gradient-to-b from-navy-900 via-navy-950 to-navy-900 text-white">
+        <div class="max-w-2xl mx-auto text-center space-y-8 md:space-y-10">
+            <div class="space-y-3">
+                <span class="text-gold-400 uppercase tracking-[0.2em] text-sm font-semibold">Kindly Respond</span>
+                <h2 class="text-3xl md:text-5xl font-semibold text-white">RSVP</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
-                <p class="text-xs md:text-sm text-navy-600">Please respond on or before <strong>April 16, 2027</strong>.</p>
+                <p class="text-sm md:text-base text-navy-200 font-medium">Please confirm your attendance on or before <strong>April 16, 2027</strong>.</p>
             </div>
 
-            <form id="rsvpForm" class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm text-left space-y-5 md:space-y-6">
-                <div>
-                    <label for="fullName" class="block text-[10px] md:text-xs uppercase tracking-wider font-semibold text-navy-800 mb-2">Full Name *</label>
-                    <input type="text" id="fullName" required placeholder="e.g., Jane Doe" class="w-full px-4 py-3 rounded-lg bg-white border border-navy-200 text-navy-900 text-sm md:text-base focus:outline-none focus:border-gold-500 transition duration-200">
+            <!-- Integrated Formspree Action and Attributes -->
+            <form id="rsvpForm" action="https://formspree.io/f/xrpgwovw" method="POST" class="bg-navy-900/90 border border-gold-500/30 p-6 md:p-10 rounded-2xl shadow-xl space-y-6 text-left">
+                <div class="space-y-2">
+                    <label for="fullName" class="block text-xs md:text-sm uppercase tracking-wider text-gold-300 font-semibold">Full Name</label>
+                    <input type="text" id="fullName" name="Name" required placeholder="Enter your full name" class="w-full bg-navy-950 border border-navy-700 rounded-lg px-4 py-3.5 text-sm md:text-base text-white placeholder-navy-500 focus:outline-none focus:border-gold-400">
                 </div>
 
-                <div>
-                    <label for="attendance" class="block text-[10px] md:text-xs uppercase tracking-wider font-semibold text-navy-800 mb-2">Will you be attending? *</label>
-                    <select id="attendance" required class="w-full px-4 py-3 rounded-lg bg-white border border-navy-200 text-navy-900 text-sm md:text-base focus:outline-none focus:border-gold-500 transition duration-200">
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="attending">Joyfully Accepts</option>
-                        <option value="declining">Regretfully Declines</option>
-                    </select>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label for="attendance" class="block text-xs md:text-sm uppercase tracking-wider text-gold-300 font-semibold">Attendance</label>
+                        <select id="attendance" name="Attendance" class="w-full bg-navy-950 border border-navy-700 rounded-lg px-4 py-3.5 text-sm md:text-base text-white focus:outline-none focus:border-gold-400">
+                            <option value="Will Attend">Will Attend</option>
+                            <option value="Regretfully Declines">Regretfully Declines</option>
+                        </select>
+                    </div>
+
+                    <!-- Seat Reservation Notice -->
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm uppercase tracking-wider text-gold-300 font-semibold">Seat Reservation</label>
+                        <div class="w-full bg-gold-500/10 border border-gold-400/60 rounded-lg px-4 py-3.5 text-xs md:text-sm text-gold-300 flex items-center justify-center font-bold tracking-wide text-center shadow-inner">
+                            <span>Strictly 1 Seat Dedicated per Invitation</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="guestCount" class="block text-[10px] md:text-xs uppercase tracking-wider font-semibold text-navy-800 mb-2">Number of Guests *</label>
-                    <select id="guestCount" required class="w-full px-4 py-3 rounded-lg bg-white border border-navy-200 text-navy-900 text-sm md:text-base focus:outline-none focus:border-gold-500 transition duration-200">
-                        <option value="1">1 Person</option>
-                        <option value="2">2 Persons</option>
-                    </select>
+                <div class="space-y-2">
+                    <label for="message" class="block text-xs md:text-sm uppercase tracking-wider text-gold-300 font-semibold">Message for the Couple</label>
+                    <textarea id="message" name="Message" rows="3" placeholder="Share a message or well wishes..." class="w-full bg-navy-950 border border-navy-700 rounded-lg px-4 py-3.5 text-sm md:text-base text-white placeholder-navy-500 focus:outline-none focus:border-gold-400"></textarea>
                 </div>
 
-                <div>
-                    <label for="message" class="block text-[10px] md:text-xs uppercase tracking-wider font-semibold text-navy-800 mb-2">Message for the Couple</label>
-                    <textarea id="message" rows="4" placeholder="Share your well wishes or dietary restrictions..." class="w-full px-4 py-3 rounded-lg bg-white border border-navy-200 text-navy-900 text-sm md:text-base focus:outline-none focus:border-gold-500 transition duration-200"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-gold-500 text-navy-950 font-semibold py-3.5 md:py-4 rounded-full uppercase tracking-wider text-xs md:text-sm shadow hover:bg-gold-400 active:scale-95 transition duration-300">
-                    Submit Response
+                <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold py-4 rounded-full uppercase tracking-wider text-sm md:text-base shadow-lg transition-all duration-300 active:scale-95">
+                    Submit RSVP
                 </button>
             </form>
-
-            <div id="rsvpSuccess" class="hidden bg-gold-100 border border-gold-300 text-gold-900 p-6 rounded-2xl">
-                <h3 class="font-serif text-2xl font-bold mb-2">Thank You!</h3>
-                <p class="text-sm">Your response has been successfully recorded. We look forward to celebrating with you!</p>
-            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-10 md:py-12 bg-navy-950 text-center text-navy-400 text-xs border-t border-navy-900">
-        <p class="font-serif italic text-base md:text-lg text-gold-300 mb-2">JV &amp; Kane</p>
-        <p>© 2027 • San Pablo City, Laguna</p>
+    <footer class="py-10 px-4 bg-navy-950 text-navy-400 border-t border-navy-800 text-center text-sm space-y-2">
+        <p class="text-xl md:text-2xl text-white font-cascadia-semibold-italic">JV &amp; Kane</p>
+        <p class="text-base text-navy-300">May 16, 2027 • San Pablo City, Laguna</p>
+        <p class="text-navy-500 text-xs pt-4">© 2027 JV &amp; Kane Wedding Celebration. All Rights Reserved.</p>
     </footer>
 
-    <!-- Interactive Scripts -->
+    <!-- Scripts -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('welcomeModal');
-            const enterBtn = document.getElementById('enterBtn');
-            const mainBody = document.getElementById('mainBody');
-            const bgMusic = document.getElementById('bgMusic');
-            const musicToggle = document.getElementById('musicToggle');
-            const rsvpForm = document.getElementById('rsvpForm');
-            const rsvpSuccess = document.getElementById('rsvpSuccess');
+        // Modal & Audio Handler
+        const welcomeModal = document.getElementById('welcomeModal');
+        const enterBtn = document.getElementById('enterBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
 
-            let isPlaying = false;
+        enterBtn.addEventListener('click', () => {
+            welcomeModal.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                welcomeModal.style.display = 'none';
+            }, 500);
 
-            // Welcome Modal & Music Trigger
-            enterBtn.addEventListener('click', function() {
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                mainBody.classList.remove('overflow-hidden');
-                
-                bgMusic.play().then(() => {
-                    isPlaying = true;
-                }).catch(err => {
-                    console.log("Audio autoplay prevented or failed:", err);
-                });
-            });
-
-            // Music Toggle Button
-            musicToggle.addEventListener('click', function() {
-                if (isPlaying) {
-                    bgMusic.pause();
-                    isPlaying = false;
-                } else {
-                    bgMusic.play();
-                    isPlaying = true;
-                }
-            });
-
-            // Countdown Timer Script
-            const weddingDate = new Date("May 16, 2027 14:00:00").getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = weddingDate - now;
-
-                if (distance < 0) {
-                    document.getElementById("days").innerText = "00";
-                    document.getElementById("hours").innerText = "00";
-                    document.getElementById("minutes").innerText = "00";
-                    document.getElementById("seconds").innerText = "00";
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-                document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-                document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-                document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
-            }
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-
-            // RSVP Form Handler
-            rsvpForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                rsvpForm.classList.add('hidden');
-                rsvpSuccess.classList.remove('hidden');
+            bgMusic.play().then(() => {
+                isPlaying = true;
+            }).catch(e => {
+                console.log("Autoplay blocked by browser or audio source missing:", e);
             });
         });
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                isPlaying = true;
+            }
+        });
+
+        // Countdown Timer Logic
+        const weddingDate = new Date('May 16, 2027 14:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
