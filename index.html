@@ -463,83 +463,104 @@
                         <li class="flex justify-between items-center"><span class="font-bold text-gold-700">6:00 PM</span> <span>Grand Entrance of the Couple</span></li>
                         <li class="flex justify-between items-center"><span class="font-bold text-gold-700">6:30 PM</span> <span>Dinner &amp; First Dance</span></li>
                         <li class="flex justify-between items-center"><span class="font-bold text-gold-700">7:30 PM</span> <span>Toasts &amp; Cake Cutting</span></li>
-                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">8:30 PM</span> <span>Open Dance Floor &amp; Socials</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">8:30 PM</span> <span>Socials &amp; Dancing</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RSVP Section (Integrated with Formspree) -->
-    <section id="rsvp" class="py-16 md:py-24 px-4 bg-navy-900 text-white">
-        <div class="max-w-2xl mx-auto text-center space-y-8">
-            <div class="space-y-3">
-                <span class="text-gold-400 uppercase tracking-[0.2em] text-sm font-semibold">Kindly Respond</span>
+    <!-- RSVP Section with Formspree Endpoint -->
+    <section id="rsvp" class="relative py-16 md:py-24 px-4 bg-navy-950 text-white overflow-hidden">
+        <!-- Live Video Background -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0 opacity-80">
+            <source src="Video.mp4" type="video/mp4">
+        </video>
+
+        <!-- Lighter Overlay for Better Video Visibility -->
+        <div class="absolute inset-0 bg-navy-950/25 z-0"></div>
+
+        <div class="relative z-10 max-w-2xl mx-auto text-center space-y-8">
+            <div class="space-y-3 drop-shadow-md">
+                <span class="text-gold-300 uppercase tracking-[0.2em] text-sm font-semibold">Join Our Celebration</span>
                 <h2 class="text-3xl md:text-5xl font-semibold text-white">RSVP</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
-                <p class="text-base text-navy-200">Please confirm your attendance on or before April 16, 2027.</p>
+                <p class="text-base text-gold-100 font-medium">Please confirm your attendance on or before <strong>April 16, 2027</strong>.</p>
             </div>
 
-            <form action="https://formspree.io/f/xrpgwovw" method="POST" class="space-y-4 text-left bg-navy-800 p-6 md:p-8 rounded-2xl border border-navy-700 shadow-lg">
+            <!-- Formspree Integration -->
+            <form action="https://formspree.io/f/xrpgwovw" method="POST" class="bg-navy-950/65 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-gold-400/40 shadow-2xl text-left space-y-5">
                 <div>
-                    <label class="block text-sm uppercase tracking-wider text-gold-300 font-semibold mb-2" for="guestName">Full Name</label>
-                    <input type="text" id="guestName" name="name" required placeholder="Enter your full name" class="w-full bg-navy-950 border border-navy-700 rounded-lg px-4 py-3 text-white placeholder-navy-400 focus:outline-none focus:border-gold-400">
+                    <label class="block text-sm font-semibold uppercase tracking-wider text-gold-300 mb-2">Full Name</label>
+                    <input type="text" name="name" placeholder="Your Full Name" required class="w-full bg-navy-950/70 border border-navy-500/80 rounded-lg px-4 py-3 text-white placeholder-navy-300 focus:outline-none focus:border-gold-400 transition">
                 </div>
+
                 <div>
-                    <label class="block text-sm uppercase tracking-wider text-gold-300 font-semibold mb-2" for="guestEmail">Email Address</label>
-                    <input type="email" id="guestEmail" name="email" required placeholder="Enter your email" class="w-full bg-navy-950 border border-navy-700 rounded-lg px-4 py-3 text-white placeholder-navy-400 focus:outline-none focus:border-gold-400">
-                </div>
-                <div>
-                    <label class="block text-sm uppercase tracking-wider text-gold-300 font-semibold mb-2" for="attendance">Will you attend?</label>
-                    <select id="attendance" name="attendance" required class="w-full bg-navy-950 border border-navy-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400">
+                    <label class="block text-sm font-semibold uppercase tracking-wider text-gold-300 mb-2">Will You Be Attending?</label>
+                    <select name="attendance" required class="w-full bg-navy-950/70 border border-navy-500/80 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition">
+                        <option value="" disabled selected>Select an option</option>
                         <option value="Joyfully Accepts">Joyfully Accepts</option>
                         <option value="Regretfully Declines">Regretfully Declines</option>
                     </select>
                 </div>
+
                 <div>
-                    <label class="block text-sm uppercase tracking-wider text-gold-300 font-semibold mb-2" for="message">Message for the Couple</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Share your warm wishes..." class="w-full bg-navy-950 border border-navy-700 rounded-lg px-4 py-3 text-white placeholder-navy-400 focus:outline-none focus:border-gold-400"></textarea>
+                    <label class="block text-sm font-semibold uppercase tracking-wider text-gold-300 mb-2">Message or Special Note for the Couple</label>
+                    <textarea name="message" rows="4" placeholder="Send your well wishes..." class="w-full bg-navy-950/70 border border-navy-500/80 rounded-lg px-4 py-3 text-white placeholder-navy-300 focus:outline-none focus:border-gold-400 transition"></textarea>
                 </div>
-                <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold py-4 rounded-lg uppercase tracking-wider shadow-md transition duration-300">
-                    Submit RSVP
+
+                <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold py-4 rounded-full uppercase tracking-wider text-base shadow-lg transition duration-300 transform active:scale-95">
+                    Submit Response
                 </button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-navy-950 text-center text-navy-400 text-sm border-t border-navy-800">
-        <p>JV &amp; Kane Wedding Celebration — May 16, 2027</p>
+    <footer class="py-8 bg-navy-950 text-navy-400 text-center text-sm border-t border-navy-800">
+        <p class="font-serif italic text-base text-gold-300/80 mb-2">#JvAndKaneForever</p>
+        <p>&copy; 2027 JV &amp; Kane Wedding. All Rights Reserved.</p>
     </footer>
 
-    <!-- Interactive Scripts -->
+    <!-- JavaScript Controls -->
     <script>
-        // Modal and Audio functionality
+        // Modal & Audio Control
         const welcomeModal = document.getElementById('welcomeModal');
         const enterBtn = document.getElementById('enterBtn');
         const bgMusic = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
 
         enterBtn.addEventListener('click', () => {
             welcomeModal.classList.add('opacity-0', 'pointer-events-none');
-            setTimeout(() => welcomeModal.remove(), 500);
-            bgMusic.play().catch(e => console.log("Audio play blocked by browser."));
+            setTimeout(() => {
+                welcomeModal.style.display = 'none';
+            }, 500);
+
+            // Attempt Autoplay Music on User Interaction
+            bgMusic.play().then(() => {
+                isPlaying = true;
+            }).catch(err => {
+                console.log('Autoplay prevented by browser:', err);
+            });
         });
 
         musicToggle.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                bgMusic.play();
-            } else {
+            if (isPlaying) {
                 bgMusic.pause();
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                isPlaying = true;
             }
         });
 
-        // Countdown Timer Logic
-        const targetDate = new Date('May 16, 2027 14:00:00').getTime();
+        // Countdown Timer
+        const weddingDate = new Date('May 16, 2027 14:00:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
-            const difference = targetDate - now;
+            const difference = weddingDate - now;
 
             if (difference > 0) {
                 const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -551,6 +572,11 @@
                 document.getElementById('hours').innerText = String(hours).padStart(2, '0');
                 document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
                 document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
             }
         }
 
