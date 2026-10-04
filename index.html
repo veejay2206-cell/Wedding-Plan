@@ -462,138 +462,113 @@
                         <li class="flex justify-between items-center"><span class="font-bold text-gold-700">6:30 PM</span> <span>Dinner &amp; First Dance</span></li>
                         <li class="flex justify-between items-center"><span class="font-bold text-gold-700">7:30 PM</span> <span>Toasts &amp; Cake Cutting</span></li>
                         <li class="flex justify-between items-center"><span class="font-bold text-gold-700">8:15 PM</span> <span>Bouquet &amp; Garter Toss</span></li>
-                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">8:45 PM</span> <span>Open Dance Floor &amp; Socials</span></li>
+                        <li class="flex justify-between items-center"><span class="font-bold text-gold-700">8:45 PM</span> <span>Open Dance Floor &amp; Party</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RSVP Section -->
-    <section id="rsvp" class="py-16 md:py-24 px-4 bg-white text-navy-900">
-        <div class="max-w-2xl mx-auto text-center space-y-8">
+    <!-- Gift Registry & Note -->
+    <section class="py-16 md:py-20 px-4 bg-white text-navy-900">
+        <div class="max-w-3xl mx-auto text-center space-y-8">
             <div class="space-y-3">
-                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">Celebrate With Us</span>
-                <h2 class="text-3xl md:text-5xl font-semibold text-navy-900">RSVP</h2>
+                <span class="text-gold-600 uppercase tracking-[0.2em] text-sm font-semibold">With Love</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-navy-900">Gift Guide</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
-                <p class="text-base md:text-lg text-navy-600">Please confirm your attendance on or before <strong class="text-navy-900">April 16, 2027</strong>.</p>
+            </div>
+            <div class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm space-y-4">
+                <p class="text-base md:text-lg text-navy-700 leading-relaxed italic">
+                    "With all that we have, we've been truly blessed. Your presence and prayers are all that we request. But if you desire to give nonetheless, a monetary gift to help us build our future together would be humbly appreciated."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="py-16 md:py-24 px-4 bg-navy-900 text-white">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="space-y-3">
+                <span class="text-gold-400 uppercase tracking-[0.2em] text-sm font-semibold">Join Us</span>
+                <h2 class="text-3xl md:text-5xl font-semibold text-white">R.S.V.P.</h2>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
+                <p class="text-navy-200 text-base md:text-lg">Please confirm your attendance on or before <strong class="text-gold-300">June 1, 2027</strong>.</p>
             </div>
 
-            <form id="rsvpForm" class="bg-navy-50 p-6 md:p-8 rounded-2xl border border-navy-200 shadow-sm text-left space-y-6">
-                <div>
-                    <label for="fullName" class="block text-sm font-semibold uppercase tracking-wider text-navy-800 mb-2">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name" class="w-full px-4 py-3 rounded-xl border border-navy-300 focus:outline-none focus:ring-2 focus:ring-gold-500 bg-white text-navy-900">
+            <div class="bg-navy-800 p-4 md:p-6 rounded-2xl border border-navy-700 shadow-xl space-y-6 text-center">
+                <div class="w-full overflow-hidden rounded-xl bg-white min-h-[600px] shadow-inner">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSclt1q9nY551GcBb_75nKlwZs5DVRDN4WQGKcrPQzkBXR6sfQ/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" class="w-full rounded-xl">Loading…</iframe>
                 </div>
-
-                <div>
-                    <label class="block text-sm font-semibold uppercase tracking-wider text-navy-800 mb-2">Will you be attending?</label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <label class="flex items-center justify-center p-3 rounded-xl border border-navy-300 bg-white cursor-pointer hover:border-gold-500 transition">
-                            <input type="radio" name="attendance" value="attending" checked class="text-gold-500 focus:ring-gold-500 mr-2">
-                            <span class="text-navy-900 font-semibold">Joyfully Accept</span>
-                        </label>
-                        <label class="flex items-center justify-center p-3 rounded-xl border border-navy-300 bg-white cursor-pointer hover:border-gold-500 transition">
-                            <input type="radio" name="attendance" value="declining" class="text-gold-500 focus:ring-gold-500 mr-2">
-                            <span class="text-navy-900 font-semibold">Regretfully Decline</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div>
-                    <label for="guestsCount" class="block text-sm font-semibold uppercase tracking-wider text-navy-800 mb-2">Number of Guests Attending</label>
-                    <select id="guestsCount" name="guestsCount" class="w-full px-4 py-3 rounded-xl border border-navy-300 focus:outline-none focus:ring-2 focus:ring-gold-500 bg-white text-navy-900">
-                        <option value="1">1 Guest</option>
-                        <option value="2">2 Guests</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="message" class="block text-sm font-semibold uppercase tracking-wider text-navy-800 mb-2">Message for the Couple</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Share your warm wishes..." class="w-full px-4 py-3 rounded-xl border border-navy-300 focus:outline-none focus:ring-2 focus:ring-gold-500 bg-white text-navy-900"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold px-6 py-4 rounded-full uppercase tracking-wider text-base shadow-lg transition-all duration-300 active:scale-95">
-                    Send RSVP
-                </button>
-            </form>
+                <p class="text-sm text-navy-300">
+                    Having trouble displaying the form above? 
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSclt1q9nY551GcBb_75nKlwZs5DVRDN4WQGKcrPQzkBXR6sfQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="text-gold-400 hover:text-gold-300 underline font-semibold ml-1">
+                        Open RSVP Form in New Tab
+                    </a>
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-navy-950 text-white text-center border-t border-gold-400/20">
-        <div class="max-w-4xl mx-auto space-y-4 px-4">
-            <h3 class="text-3xl font-serif italic text-gold-300">JV &amp; Kane</h3>
-            <p class="text-sm uppercase tracking-widest text-navy-300">May 16, 2027 • San Pablo City, Laguna</p>
-            <p class="text-xs text-navy-400 pt-4">We can'wait to celebrate our special day with you!</p>
-        </div>
+    <footer class="py-8 bg-navy-950 text-navy-400 text-center text-sm border-t border-navy-800 space-y-2">
+        <p class="font-serif italic text-base text-gold-300">JV &amp; Kane Wedding</p>
+        <p>© 2027 • San Pablo City, Laguna</p>
     </footer>
 
-    <!-- Script section for countdown, modal, audio player, and form logic -->
+    <!-- JavaScript Interactivity -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const welcomeModal = document.getElementById('welcomeModal');
-            const enterBtn = document.getElementById('enterBtn');
-            const bgMusic = document.getElementById('bgMusic');
-            const musicToggle = document.getElementById('musicToggle');
-            let isPlaying = false;
+        // Modal & Music Controls
+        const welcomeModal = document.getElementById('welcomeModal');
+        const enterBtn = document.getElementById('enterBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
 
-            // Welcome Modal & Music Trigger
-            enterBtn.addEventListener('click', () => {
-                welcomeModal.classList.add('opacity-0', 'pointer-events-none');
-                setTimeout(() => welcomeModal.remove(), 500);
-
-                bgMusic.play().then(() => {
-                    isPlaying = true;
-                }).catch(e => console.log("Audio autoplay prevented: ", e));
-            });
-
-            // Toggle Music
-            musicToggle.addEventListener('click', () => {
-                if (isPlaying) {
-                    bgMusic.pause();
-                    isPlaying = false;
-                } else {
-                    bgMusic.play();
-                    isPlaying = true;
-                }
-            });
-
-            // Countdown Timer Logic (May 16, 2027)
-            const targetDate = new Date('May 16, 2027 14:00:00').getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const difference = targetDate - now;
-
-                if (difference > 0) {
-                    const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-                    const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                    const s = Math.floor((difference % (1000 * 60)) / 1000);
-
-                    document.getElementById('days').innerText = d.toString().padStart(2, '0');
-                    document.getElementById('hours').innerText = h.toString().padStart(2, '0');
-                    document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
-                    document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
-                } else {
-                    document.getElementById('days').innerText = '00';
-                    document.getElementById('hours').innerText = '00';
-                    document.getElementById('minutes').innerText = '00';
-                    document.getElementById('seconds').innerText = '00';
-                }
-            }
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-
-            // Form Submission Placeholder
-            const rsvpForm = document.getElementById('rsvpForm');
-            rsvpForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your RSVP! We have received your response.');
-                rsvpForm.reset();
-            });
+        enterBtn.addEventListener('click', () => {
+            welcomeModal.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => welcomeModal.remove(), 500);
+            bgMusic.play().then(() => {
+                isPlaying = true;
+            }).catch(e => console.log("Autoplay blocked:", e));
         });
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                isPlaying = true;
+            }
+        });
+
+        // Countdown Timer Logic (July 10, 2027 14:00:00)
+        const weddingDate = new Date('July 10, 2027 14:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
